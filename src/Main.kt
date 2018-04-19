@@ -12,22 +12,17 @@ object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
-
         val server = Server(4444)
-        println("Server Started")
+
         while (true) {
             val client = SecureClient(server.accept())
-            println("got client: ${client.channel.remoteAddress}")
             val decodedMessage = client.decodeMessage()
-            println("Message was: $decodedMessage")
 
             if (!accessGranted) {
                 if (decodedMessage == password) {
                     accessGranted = true
-                    println("Access granted")
                     client.writeMessage("ACCESS_GRANTED")
                 } else {
-                    println("Access denied")
                     client.writeMessage("ACCESS_DENIED")
                 }
             } else {
@@ -38,17 +33,11 @@ object Main {
                         client.close()
                     }
                     else -> {
-                        println("test1")
                         val response = arduino.sendCommand(decodedMessage)
-                        println("test2 $response")
-
                         client.writeMessage(response)
-                        println("test3")
-
                     }
                 }
             }
-            println("end")
         }
 
     }

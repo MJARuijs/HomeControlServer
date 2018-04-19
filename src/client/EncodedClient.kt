@@ -5,7 +5,7 @@ import java.nio.channels.SocketChannel
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-open class EncodedClient(internal val channel: SocketChannel): Client {
+open class EncodedClient(private val channel: SocketChannel): Client {
 
     private val writeSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
     private val readSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
@@ -48,7 +48,6 @@ open class EncodedClient(internal val channel: SocketChannel): Client {
         val size = String(Base64.getDecoder().decode(readSizeBuffer).array(), StandardCharsets.UTF_8).toInt()
 
         if (size > 1000) {
-            println("ERROR: too large: $size")
             throw ClientException("Size was too large")
         }
 

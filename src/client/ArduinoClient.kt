@@ -44,7 +44,6 @@ class ArduinoClient(val name: String, private val channel: SocketChannel): Clien
         val size = readSizeBuffer.int
 
         if (size > 1000) {
-            println("ERROR: too large: $size")
             throw ClientException("Size was too large")
         }
 
