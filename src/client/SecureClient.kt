@@ -33,12 +33,12 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         val keyPair = asymmetricGenerator.generateKeyPair()
         val clientKey = keyPair.private
 
-        write(keyPair.public.encoded)
+//        write(keyPair.public.encoded)
 
         val keyFactory = KeyFactory.getInstance("RSA")
-        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(read().array()))
+//        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(read().array()))
 
-        encryptor.init(Cipher.PUBLIC_KEY, serverKey)
+//        encryptor.init(Cipher.PUBLIC_KEY, serverKey)
         decryptor.init(Cipher.PRIVATE_KEY, clientKey)
     }
 
@@ -67,6 +67,5 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         write(messageBytes)
         write(keyBytes)
     }
-
 
 }
