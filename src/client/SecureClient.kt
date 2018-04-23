@@ -18,7 +18,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         val symmetricGenerator: KeyGenerator = KeyGenerator.getInstance("AES")
 
         init {
-            asymmetricGenerator.initialize(512, SecureRandom.getInstance("SHA1PRNG"))
+            asymmetricGenerator.initialize(2048, SecureRandom.getInstance("SHA1PRNG"))
             symmetricGenerator.init(128)
         }
     }
@@ -31,15 +31,15 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         symmetricKey = symmetricGenerator.generateKey()
 
         val keyPair = asymmetricGenerator.generateKeyPair()
-//        val clientKey = keyPair.private
+        val clientKey = keyPair.private
 
-//        write(keyPair.public.encoded)
+        write(keyPair.public.encoded)
 
-//        val keyFactory = KeyFactory.getInstance("RSA")
-//        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(read().array()))
+        val keyFactory = KeyFactory.getInstance("RSA")
+        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(read().array()))
 
-//        encryptor.init(Cipher.PUBLIC_KEY, serverKey)
-//        decryptor.init(Cipher.PRIVATE_KEY, clientKey)
+        encryptor.init(Cipher.PUBLIC_KEY, serverKey)
+        decryptor.init(Cipher.PRIVATE_KEY, clientKey)
     }
 
     fun decodeMessage(): String {
