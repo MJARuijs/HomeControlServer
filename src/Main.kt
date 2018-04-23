@@ -16,7 +16,7 @@ object Main {
         var cond = true
         while (cond) {
             val client = SecureClient(server.accept())
-            val decodedMessage = client.decodeMessage()
+//            val decodedMessage = client.decodeMessage()
             cond = false
 
 //            if (!accessGranted) {
