@@ -15,7 +15,7 @@ object Main {
         val server = Server(4444)
         var cond = true
 //        while (cond) {
-//            val client = SecureClient(server.accept())
+            val client = SecureClient(server.accept())
 //            val decodedMessage = client.decodeMessage()
 //            cond = false
 
