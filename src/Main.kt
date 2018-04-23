@@ -13,31 +13,32 @@ object Main {
     @JvmStatic
     fun main(args: Array<String>) {
         val server = Server(4444)
-
-        while (true) {
+        var cond = true
+        while (cond) {
             val client = SecureClient(server.accept())
             val decodedMessage = client.decodeMessage()
+            cond = false
 
-            if (!accessGranted) {
-                if (decodedMessage == password) {
-                    accessGranted = true
-                    client.writeMessage("ACCESS_GRANTED")
-                } else {
-                    client.writeMessage("ACCESS_DENIED")
-                }
-            } else {
-                when (decodedMessage) {
-                    "close_connection" -> {
-                        accessGranted = false
-                        client.writeMessage("CONNECTION_CLOSED")
-                        client.close()
-                    }
-                    else -> {
-//                        val response = arduino.sendCommand(decodedMessage)
-//                        client.writeMessage(response)
-                    }
-                }
-            }
+//            if (!accessGranted) {
+//                if (decodedMessage == password) {
+//                    accessGranted = true
+//                    client.writeMessage("ACCESS_GRANTED")
+//                } else {
+//                    client.writeMessage("ACCESS_DENIED")
+//                }
+//            } else {
+//                when (decodedMessage) {
+//                    "close_connection" -> {
+//                        accessGranted = false
+//                        client.writeMessage("CONNECTION_CLOSED")
+//                        client.close()
+//                    }
+//                    else -> {
+////                        val response = arduino.sendCommand(decodedMessage)
+////                        client.writeMessage(response)
+//                    }
+//                }
+//            }
         }
 
     }
