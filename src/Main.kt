@@ -1,5 +1,4 @@
 import client.ArduinoClient
-import client.SecureClient
 import java.net.InetSocketAddress
 import java.nio.channels.SocketChannel
 
@@ -15,8 +14,8 @@ object Main {
         val server = Server(4444)
 
         while (true) {
-            val client = SecureClient(server.accept())
-            val decodedMessage = client.decodeMessage()
+            val client = ArduinoClient("hi", server.accept())
+            val decodedMessage = client.readMessage()
 
             if (!accessGranted) {
                 if (decodedMessage == password) {
