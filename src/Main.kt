@@ -14,10 +14,10 @@ object Main {
     fun main(args: Array<String>) {
         val server = Server(4444)
         var cond = true
-        while (cond) {
-            val client = SecureClient(server.accept())
+//        while (cond) {
+//            val client = SecureClient(server.accept())
 //            val decodedMessage = client.decodeMessage()
-            cond = false
+//            cond = false
 
 //            if (!accessGranted) {
 //                if (decodedMessage == password) {
@@ -39,7 +39,7 @@ object Main {
 //                    }
 //                }
 //            }
-        }
+//        }
 
     }
 }
