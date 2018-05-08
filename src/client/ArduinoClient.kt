@@ -59,12 +59,12 @@ class ArduinoClient(val name: String, private val channel: SocketChannel): Clien
         return data
     }
 
-    private fun writeMessage(message: String) {
+    fun writeMessage(message: String) {
         val bytes = message.toByteArray(StandardCharsets.UTF_8)
         write(bytes)
     }
 
-    private fun readMessage(): String {
+    fun readMessage(): String {
 
         return try {
             val buffer = read()
