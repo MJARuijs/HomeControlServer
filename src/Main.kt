@@ -2,6 +2,7 @@ import client.ArduinoClient
 import client.SecureClient
 import java.net.InetSocketAddress
 import java.nio.channels.SocketChannel
+import javax.crypto.Cipher
 
 object Main {
 
@@ -12,6 +13,8 @@ object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
+        val maxKeyLen = Cipher.getMaxAllowedKeyLength("AES")
+        println(maxKeyLen)
         val server = Server(4444)
         println("Server started")
         while (true) {
