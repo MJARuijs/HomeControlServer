@@ -25,11 +25,11 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
 
     private val encryptor = Cipher.getInstance("RSA/ECB/PKCS1Padding")
 //    private val decryptor = Cipher.getInstance("RSA/ECB/PKCS1Padding")
-    private val symmetricKey: SecretKey
+    //private val symmetricKey: SecretKey
 
     init {
         println("1")
-        symmetricKey = symmetricGenerator.generateKey()
+        //symmetricKey = symmetricGenerator.generateKey()
         println("2")
 
         val keyPair = asymmetricGenerator.generateKeyPair()
@@ -72,13 +72,13 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
 
     fun writeMessage(message: String) {
         val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.ENCRYPT_MODE, symmetricKey)
+        //cipher.init(Cipher.ENCRYPT_MODE, symmetricKey)
         val messageBytes = cipher.doFinal(message.toByteArray(UTF_8))
 
-        val keyBytes = encryptor.doFinal(symmetricKey.encoded)
+        //val keyBytes = encryptor.doFinal(symmetricKey.encoded)
 
         write(messageBytes)
-        write(keyBytes)
+        //write(keyBytes)
     }
 
 }
