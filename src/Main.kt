@@ -15,36 +15,36 @@ object Main {
         val server = Server(4444)
         println("Server started")
         while (true) {
-//            val client = SecureClient(server.accept())
-//            val message = client.decodeMessage()
-//            println(message)
-//            client.writeMessage("Hello!")
             val client = SecureClient(server.accept())
-            println("Got client 1")
-
-            val decodedMessage = client.decodeMessage()
-            println("Got client 2")
-
-            if (!accessGranted) {
-                if (decodedMessage == password) {
-                    accessGranted = true
-                    client.writeMessage("ACCESS_GRANTED")
-                } else {
-                    client.writeMessage("ACCESS_DENIED")
-                }
-            } else {
-                when (decodedMessage) {
-                    "close_connection" -> {
-                        accessGranted = false
-                        client.writeMessage("CONNECTION_CLOSED")
-                        client.close()
-                    }
-                    else -> {
-                        val response = arduino.sendCommand(decodedMessage)
-                        client.writeMessage(response)
-                    }
-                }
-            }
+            val message = client.decodeMessage()
+            println(message)
+            client.writeMessage("Hello!")
+//            val client = SecureClient(server.accept())
+//            println("Got client 1")
+//
+//            val decodedMessage = client.decodeMessage()
+//            println("Got client 2")
+//
+//            if (!accessGranted) {
+//                if (decodedMessage == password) {
+//                    accessGranted = true
+//                    client.writeMessage("ACCESS_GRANTED")
+//                } else {
+//                    client.writeMessage("ACCESS_DENIED")
+//                }
+//            } else {
+//                when (decodedMessage) {
+//                    "close_connection" -> {
+//                        accessGranted = false
+//                        client.writeMessage("CONNECTION_CLOSED")
+//                        client.close()
+//                    }
+//                    else -> {
+//                        val response = arduino.sendCommand(decodedMessage)
+//                        client.writeMessage(response)
+//                    }
+//                }
+//            }
         }
 
     }
