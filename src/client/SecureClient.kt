@@ -14,11 +14,11 @@ import javax.crypto.spec.SecretKeySpec
 class SecureClient(channel: SocketChannel): EncodedClient(channel) {
 
     private companion object {
-        //val asymmetricGenerator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
+        val asymmetricGenerator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
         val symmetricGenerator: KeyGenerator = KeyGenerator.getInstance("AES")
 
         init {
-            //asymmetricGenerator.initialize(2048, SecureRandom.getInstanceStrong())
+            asymmetricGenerator.initialize(2048, SecureRandom.getInstanceStrong())
             symmetricGenerator.init(128)
         }
     }
@@ -32,7 +32,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         symmetricKey = symmetricGenerator.generateKey()
         println("2")
 
-//        val keyPair = asymmetricGenerator.generateKeyPair()
+        val keyPair = asymmetricGenerator.generateKeyPair()
         println("3")
 
 //        val clientKey = keyPair.private
