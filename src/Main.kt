@@ -16,7 +16,6 @@ object Main {
         println("Server started")
         while (true) {
             val client = SecureClient(server.accept())
-            println("1")
             val message = client.decodeMessage()
             println(message)
             client.writeMessage("Hello!")
