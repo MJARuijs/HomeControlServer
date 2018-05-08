@@ -15,8 +15,8 @@ object Main {
         val server = Server(4444)
         println("Server started")
         while (true) {
-            val client = SecureClient(server.accept())
-            val message = client.decodeMessage()
+            val client = ArduinoClient("hi", server.accept())
+            val message = client.readMessage()
             println(message)
             client.writeMessage("Hello!")
 //            val client = SecureClient(server.accept())
