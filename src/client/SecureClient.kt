@@ -18,7 +18,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         val symmetricGenerator: KeyGenerator = KeyGenerator.getInstance("AES")
 
         init {
-            asymmetricGenerator.initialize(2048, SecureRandom.getInstanceStrong())
+            asymmetricGenerator.initialize(2048, SecureRandom.getInstance("SHA1PRNG"))
             symmetricGenerator.init(128)
         }
     }
