@@ -15,16 +15,8 @@ object Main {
         val server = Server(4444)
         println("Server started")
         while (true) {
-            //val client = SecureClient(server.accept())
-//            val client = ArduinoClient("hi", server.accept())
-            //val message = client.decodeMessage()
-            //println(message)
-            //client.writeMessage("Hello!")
             val client = SecureClient(server.accept())
-            println("Got client 1")
-
             val decodedMessage = client.decodeMessage()
-            println("Got client 2")
 
             if (!accessGranted) {
                 if (decodedMessage == password) {
@@ -47,6 +39,5 @@ object Main {
                 }
             }
         }
-
     }
 }
