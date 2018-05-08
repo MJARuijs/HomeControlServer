@@ -14,17 +14,17 @@ import javax.crypto.spec.SecretKeySpec
 class SecureClient(channel: SocketChannel): EncodedClient(channel) {
 
     private companion object {
-        val asymmetricGenerator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
+        //val asymmetricGenerator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
         val symmetricGenerator: KeyGenerator = KeyGenerator.getInstance("AES")
 
         init {
-            asymmetricGenerator.initialize(2048, SecureRandom.getInstanceStrong())
+            //asymmetricGenerator.initialize(2048, SecureRandom.getInstanceStrong())
             symmetricGenerator.init(128)
         }
     }
 
     private val encryptor = Cipher.getInstance("RSA/ECB/PKCS1Padding")
-    private val decryptor = Cipher.getInstance("RSA/ECB/PKCS1Padding")
+//    private val decryptor = Cipher.getInstance("RSA/ECB/PKCS1Padding")
     private val symmetricKey: SecretKey
 
     init {
@@ -32,13 +32,13 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         symmetricKey = symmetricGenerator.generateKey()
         println("2")
 
-        val keyPair = asymmetricGenerator.generateKeyPair()
+//        val keyPair = asymmetricGenerator.generateKeyPair()
         println("3")
 
-        val clientKey = keyPair.private
+//        val clientKey = keyPair.private
         println("4")
 
-        write(keyPair.public.encoded)
+//        write(keyPair.public.encoded)
         println("5")
 
         val keyFactory = KeyFactory.getInstance("RSA")
@@ -50,7 +50,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         encryptor.init(Cipher.PUBLIC_KEY, serverKey)
         println("8")
 
-        decryptor.init(Cipher.PRIVATE_KEY, clientKey)
+//        decryptor.init(Cipher.PRIVATE_KEY, clientKey)
         println("9")
 
     }
@@ -59,9 +59,9 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         val message = read().array()
         val key = read().array()
 
-        val decryptedKey = decryptor.doFinal(key)
+//        val decryptedKey = decryptor.doFinal(key)
 
-        val secretKey = SecretKeySpec(decryptedKey, 0, decryptedKey.size, "AES")
+        val secretKey = SecretKeySpec(key, 0, key.size, "AES")
         val cipher = Cipher.getInstance("AES")
         cipher.init(Cipher.DECRYPT_MODE, secretKey)
 
