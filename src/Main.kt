@@ -14,6 +14,7 @@ object Main {
     fun main(args: Array<String>) {
         val server = Server(4444)
 
+        arduino.sendCommand("9")
         println("Server started")
 
         while (true) {
