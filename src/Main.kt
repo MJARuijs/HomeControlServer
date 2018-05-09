@@ -12,9 +12,8 @@ object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val server = Server(4444)
 
-        arduino.sendCommand("9")
+        val server = Server(4444)
         println("Server started")
 
         while (true) {
