@@ -30,9 +30,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
     init {
         symmetricKey = symmetricGenerator.generateKey()
 
-        println("1")
         val keyPair = asymmetricGenerator.generateKeyPair()
-        println("2")
         val clientKey = keyPair.private
 
         write(keyPair.public.encoded)
