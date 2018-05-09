@@ -45,7 +45,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         println("client initialized")
     }
 
-    fun decodeMessage(): String {
+    fun readMessage(): String {
         val message = read().array()
         val key = read().array()
 
