@@ -1,4 +1,3 @@
-import client.ArduinoClient
 import client.SecureClient
 import java.net.InetSocketAddress
 import java.nio.channels.SocketChannel
@@ -7,15 +6,14 @@ object Main {
 
     private const val password = "9"
 
-    private var arduino = ArduinoClient("Bedroom", SocketChannel.open(InetSocketAddress("192.168.0.14", 80)))
+    private var roomModule = SecureClient(SocketChannel.open(InetSocketAddress("192.168.0.18", 4444)))
     private var accessGranted = false
 
     @JvmStatic
     fun main(args: Array<String>) {
 
-        val server = Server(4444)
+        val server = Server(4443)
         println("Server started")
-
         while (true) {
 
             val client = SecureClient(server.accept())
@@ -36,7 +34,8 @@ object Main {
                         client.close()
                     }
                     else -> {
-                        val response = arduino.sendCommand(decodedMessage)
+                        roomModule.writeMessage(decodedMessage)
+                        val response = roomModule.readMessage()
                         client.writeMessage(response)
                     }
                 }
