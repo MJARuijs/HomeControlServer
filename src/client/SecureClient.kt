@@ -40,7 +40,6 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
 
         encryptor.init(Cipher.PUBLIC_KEY, serverKey)
         decryptor.init(Cipher.PRIVATE_KEY, clientKey)
-        println("client initialized")
     }
 
     fun readMessage(): String {
