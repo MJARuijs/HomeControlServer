@@ -6,7 +6,7 @@ object Main {
 
     private const val password = "9"
 
-    private var roomModule = SecureClient(SocketChannel.open(InetSocketAddress("192.168.178.12", 4444)))
+//    private var roomModule = SecureClient(SocketChannel.open(InetSocketAddress("192.168.178.12", 4444)))
     private var accessGranted = false
 
     @JvmStatic
@@ -34,9 +34,9 @@ object Main {
                         client.close()
                     }
                     else -> {
-                        roomModule.writeMessage(decodedMessage)
-                        val response = roomModule.readMessage()
-                        client.writeMessage(response)
+//                        roomModule.writeMessage(decodedMessage)
+//                        val response = roomModule.readMessage()
+//                        client.writeMessage(response)
                     }
                 }
             }
