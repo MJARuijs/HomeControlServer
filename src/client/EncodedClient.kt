@@ -27,8 +27,6 @@ open class EncodedClient(private val channel: SocketChannel): Client {
 
         buffer.rewind()
 
-        println("Writing")
-
         // Write data
         channel.write(buffer)
     }

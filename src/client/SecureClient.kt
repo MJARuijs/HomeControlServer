@@ -50,7 +50,6 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
             return "ERROR"
         }
 
-        println("Message: ${String(message)}, Key: ${String(key)}")
         val decryptedKey = decryptor.doFinal(key)
 
         val secretKey = SecretKeySpec(decryptedKey, 0, decryptedKey.size, "AES")
