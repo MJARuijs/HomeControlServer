@@ -10,7 +10,7 @@ open class EncodedClient(private val channel: SocketChannel): Client {
     private val writeSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
     private val readSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
 
-    override fun write(bytes: ByteArray) {
+    final override fun write(bytes: ByteArray) {
 
         val buffer = ByteBuffer.wrap(Base64.getEncoder().encode(bytes))
 
@@ -20,6 +20,7 @@ open class EncodedClient(private val channel: SocketChannel): Client {
         // Prepare size buffer
         writeSizeBuffer.clear()
         writeSizeBuffer.put(size)
+
         writeSizeBuffer.rewind()
 
         // Write size
@@ -32,7 +33,13 @@ open class EncodedClient(private val channel: SocketChannel): Client {
     }
 
     @Throws (ClientException::class)
-    override fun read(): ByteBuffer {
+    final override fun read(): ByteBuffer {
+
+        try {
+
+        } catch (e: Exception) {
+
+        }
 
         // Read size
         readSizeBuffer.clear()

@@ -11,7 +11,7 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
 
-class SecureClient(channel: SocketChannel): EncodedClient(channel) {
+open class SecureClient(channel: SocketChannel): EncodedClient(channel) {
 
     private companion object {
         val asymmetricGenerator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
@@ -46,10 +46,6 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         val message = read().array()
         val key = read().array()
 
-        if (String(message) == "ERROR" || String(key) == "ERROR") {
-            return "ERROR"
-        }
-
         val decryptedKey = decryptor.doFinal(key)
 
         val secretKey = SecretKeySpec(decryptedKey, 0, decryptedKey.size, "AES")
@@ -61,7 +57,7 @@ class SecureClient(channel: SocketChannel): EncodedClient(channel) {
         return String(decryptedMessage, UTF_8)
     }
 
-    fun writeMessage(message: String) {
+    open fun writeMessage(message: String) {
         val cipher = Cipher.getInstance("AES")
         cipher.init(Cipher.ENCRYPT_MODE, symmetricKey)
         val messageBytes = cipher.doFinal(message.toByteArray(UTF_8))

@@ -1,18 +1,20 @@
 import client.SecureClient
-import java.net.InetSocketAddress
-import java.nio.channels.SocketChannel
 
 object Main {
 
     private const val password = "9"
 
-    private var roomModule = SecureClient(SocketChannel.open(InetSocketAddress("192.168.178.19", 4444)))
+    private var roomModule = RoomModule("192.168.178.19", 4444)
     private var accessGranted = false
+    private var connectionAttempts = 0
 
     @JvmStatic
     fun main(args: Array<String>) {
 
         val server = Server(4443)
+
+        sendToRoom("NotificationColor: r=24432, g=254, b=254")
+
         println("Server started")
         while (true) {
 
@@ -51,8 +53,15 @@ object Main {
         val response = roomModule.readMessage()
         println("RESPONSE $response")
         return if (response == "ERROR") {
-            sendToRoom(message)
+            if (connectionAttempts < 10) {
+                println("Attempts: $connectionAttempts")
+                connectionAttempts++
+                sendToRoom(message)
+            } else {
+                "Error"
+            }
         } else {
+            connectionAttempts = 0
             response
         }
     }
