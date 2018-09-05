@@ -4,7 +4,7 @@ object Main {
 
     private const val password = "9"
 
-    private var roomModule = RoomModule("192.168.178.19", 4444)
+    private var roomModule = RoomModule("192.168.178.24", 4444)
     private var accessGranted = false
     private var connectionAttempts = 0
 
