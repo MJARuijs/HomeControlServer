@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="HomeControlServer:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="11fd2614-0fff-496b-a847-5c0b7c399467" name="Default" comment="Create runnable jar">
+      <change afterPath="$PROJECT_DIR$/src/networking/client/ClientException.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networking/nio/Manager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networking/nio/NonBlockingClient.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networking/nio/Registrable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RoomModule.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/nio/Server.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Client.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/client/Client.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/ClientException.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/EncodedClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/client/EncodedClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/SecureClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/client/SecureClient.kt" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CheckStyle-IDEA-workspace">
+    <option name="configuration">
+      <map>
+        <entry key="last-active-plugin-version" value="5.18.6" />
+      </map>
+    </option>
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/HomeControlServer$Main.ic" NAME="Main Coverage Results" MODIFIED="1525795457012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.4703929">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/networking/nio/Server.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                  <folding>
+                    <element signature="e#24#98#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Main.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="252">
+                  <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#0#58#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/networking/client/ClientImpl.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/networking/client/Client.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="108">
+                  <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/networking/client/EncodedClient.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1152">
+                  <caret line="68" selection-start-line="68" selection-end-line="68" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingClient.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/networking/nio/Manager.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="414">
+                  <caret line="25" selection-start-line="25" selection-end-line="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/nio/Main.kt" />
+        <option value="$PROJECT_DIR$/src/nio/Manager.kt" />
+        <option value="$PROJECT_DIR$/src/networking/EncodedClient.kt" />
+        <option value="$PROJECT_DIR$/src/nio/NonBlockingClient.kt" />
+        <option value="$PROJECT_DIR$/src/nio/Server.kt" />
+        <option value="$PROJECT_DIR$/src/ArduinoClient.kt" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/devices/constants.kt" />
+        <option value="$PROJECT_DIR$/src/devices/Room.kt" />
+        <option value="$PROJECT_DIR$/src/devices/Constants.kt" />
+        <option value="$PROJECT_DIR$/src/devices/Lamp.kt" />
+        <option value="$PROJECT_DIR$/src/devices/ArduinoModule.kt" />
+        <option value="$PROJECT_DIR$/src/client/ArduinoClient.kt" />
+        <option value="$PROJECT_DIR$/src/Server.kt" />
+        <option value="$PROJECT_DIR$/src/client/Client.kt" />
+        <option value="$PROJECT_DIR$/src/client/SecureClient.kt" />
+        <option value="$PROJECT_DIR$/src/client/EncodedClient.kt" />
+        <option value="$PROJECT_DIR$/src/RoomModule.kt" />
+        <option value="$PROJECT_DIR$/src/networking/client/ClientException.kt" />
+        <option value="$PROJECT_DIR$/src/networking/client/SecureClient.kt" />
+        <option value="$PROJECT_DIR$/src/networking/nio/NonBlockingClient.kt" />
+        <option value="$PROJECT_DIR$/src/networking/nio/Registrable.kt" />
+        <option value="$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt" />
+        <option value="$PROJECT_DIR$/src/Main.kt" />
+        <option value="$PROJECT_DIR$/src/networking/client/EncodedClient.kt" />
+        <option value="$PROJECT_DIR$/src/networking/client/RoomClient.kt" />
+        <option value="$PROJECT_DIR$/src/networking/nio/Manager.kt" />
+        <option value="$PROJECT_DIR$/src/networking/client/Client.kt" />
+        <option value="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" />
+        <option value="$PROJECT_DIR$/src/networking/nio/Server.kt" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2369" />
+    <option name="y" value="27" />
+    <option name="width" value="1843" />
+    <option name="height" value="810" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549708057870" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Room Module" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable\te" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="client" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/networking/nio" />
+      <recent name="$PROJECT_DIR$/src/networking/client" />
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
+      <recent name="C:\Users\Marc\Documents\Java Projects\HomeControlServer\runnable" />
+      <recent name="C:\Users\Marc\Documents\Java Projects\HomeControlServer\runnable\HomeControlServer_jar" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Kotlin.Main">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NIOServer.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/runnable/NIOServer.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Main" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="HomeControlServer" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JAR Application.NIOServer.jar" />
+      <item itemvalue="Kotlin.Main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.Main" />
+        <item itemvalue="JAR Application.NIOServer.jar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11fd2614-0fff-496b-a847-5c0b7c399467" name="Default" comment="" />
+      <created>1524167594333</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524167594333</updated>
+      <workItem from="1524167598132" duration="1119000" />
+      <workItem from="1524478237270" duration="10182000" />
+      <workItem from="1525716197021" duration="310000" />
+      <workItem from="1525764403362" duration="14982000" />
+      <workItem from="1525850948570" duration="3829000" />
+      <workItem from="1525867101794" duration="825000" />
+      <workItem from="1525935875583" duration="530000" />
+      <workItem from="1525956632241" duration="7196000" />
+      <workItem from="1526020068308" duration="11506000" />
+      <workItem from="1526044375607" duration="2061000" />
+      <workItem from="1526051560243" duration="2503000" />
+      <workItem from="1526108890671" duration="8239000" />
+      <workItem from="1526123576781" duration="319000" />
+      <workItem from="1526141610730" duration="653000" />
+      <workItem from="1526207867023" duration="33000" />
+      <workItem from="1526207979567" duration="912000" />
+      <workItem from="1526209918025" duration="1129000" />
+      <workItem from="1526212455600" duration="1034000" />
+      <workItem from="1526216231522" duration="292000" />
+      <workItem from="1526216885145" duration="9000" />
+      <workItem from="1526216937010" duration="343000" />
+      <workItem from="1532686679180" duration="3613000" />
+      <workItem from="1532766375826" duration="6000" />
+      <workItem from="1533382902570" duration="2139000" />
+      <workItem from="1533550470911" duration="150000" />
+      <workItem from="1534519488904" duration="621000" />
+      <workItem from="1534583334328" duration="1469000" />
+      <workItem from="1534586428921" duration="804000" />
+      <workItem from="1534589816164" duration="844000" />
+      <workItem from="1534590865355" duration="1187000" />
+      <workItem from="1534764771290" duration="261000" />
+      <workItem from="1534840570452" duration="7730000" />
+      <workItem from="1534865969157" duration="627000" />
+      <workItem from="1535360349857" duration="18500000" />
+      <workItem from="1535471251892" duration="5298000" />
+      <workItem from="1535800892519" duration="3520000" />
+      <workItem from="1535820095799" duration="600000" />
+      <workItem from="1535977431186" duration="599000" />
+      <workItem from="1536046282433" duration="8999000" />
+      <workItem from="1536074785885" duration="4102000" />
+      <workItem from="1536135966527" duration="3730000" />
+      <workItem from="1536225232977" duration="14000" />
+      <workItem from="1539415023892" duration="608000" />
+      <workItem from="1549703727384" duration="4367000" />
+      <workItem from="1549790236737" duration="551000" />
+      <workItem from="1549791513655" duration="5596000" />
+      <workItem from="1549877458305" duration="7653000" />
+      <workItem from="1549897991456" duration="2038000" />
+      <workItem from="1549905376377" duration="469000" />
+      <workItem from="1549953899262" duration="1203000" />
+      <workItem from="1549974543340" duration="745000" />
+    </task>
+    <task id="LOCAL-00023" summary="Create runnable jar">
+      <created>1525770765917</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1525770765917</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Create runnable jar">
+      <created>1525772139784</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1525772139784</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Create runnable jar">
+      <created>1525772445045</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1525772445045</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Create runnable jar">
+      <created>1525772829368</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1525772829368</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Create runnable jar">
+      <created>1525772956708</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1525772956708</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Create runnable jar">
+      <created>1525775434459</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1525775434459</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Create runnable jar">
+      <created>1525781762299</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1525781762299</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Create runnable jar">
+      <created>1525783479396</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1525783479396</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Create runnable jar">
+      <created>1525783687016</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1525783687016</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Create runnable jar">
+      <created>1525783773727</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1525783773727</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Create runnable jar">
+      <created>1525783842229</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1525783842229</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Create runnable jar">
+      <created>1525784217291</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1525784217291</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Create runnable jar">
+      <created>1525784280172</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1525784280172</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Create runnable jar">
+      <created>1525784390556</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1525784390556</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Create runnable jar">
+      <created>1525784549821</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1525784549821</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Create runnable jar">
+      <created>1525784889214</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1525784889214</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Create runnable jar">
+      <created>1525791693233</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1525791693233</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Create runnable jar">
+      <created>1525795624474</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1525795624474</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Create runnable jar">
+      <created>1525795773249</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1525795773249</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Create runnable jar">
+      <created>1525795851714</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1525795851714</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Create runnable jar">
+      <created>1525795908835</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1525795908835</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Create runnable jar">
+      <created>1525795965550</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1525795965550</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Create runnable jar">
+      <created>1525796243969</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1525796243969</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Create runnable jar">
+      <created>1525797554448</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1525797554448</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Create runnable jar">
+      <created>1525797627472</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1525797627472</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Create runnable jar">
+      <created>1525798436211</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1525798436211</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Create runnable jar">
+      <created>1525798510303</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1525798510303</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Create runnable jar">
+      <created>1525798660156</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1525798660157</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Create runnable jar">
+      <created>1525798785444</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1525798785444</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Create runnable jar">
+      <created>1525851155128</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1525851155129</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Create runnable jar">
+      <created>1525851397507</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1525851397507</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Create runnable jar">
+      <created>1525851427458</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1525851427458</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Create runnable jar">
+      <created>1525851708954</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1525851708954</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Create runnable jar">
+      <created>1525851805790</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1525851805790</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Create runnable jar">
+      <created>1525852104087</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1525852104087</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Create runnable jar">
+      <created>1525856842259</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1525856842259</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Create runnable jar">
+      <created>1525856848409</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1525856848409</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Create runnable jar">
+      <created>1525873134157</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1525873134158</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Create runnable jar">
+      <created>1526123155072</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1526123155072</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Create runnable jar">
+      <created>1526210978908</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1526210978909</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Create runnable jar">
+      <created>1526215594567</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1526215594568</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Create runnable jar">
+      <created>1526217201077</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1526217201077</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Create runnable jar">
+      <created>1532687079905</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1532687079906</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Create runnable jar">
+      <created>1532688526745</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1532688526745</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Create runnable jar">
+      <created>1534590551615</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1534590551616</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Create runnable jar">
+      <created>1535371977054</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1535371977054</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Create runnable jar">
+      <created>1535381794753</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1535381794753</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Create runnable jar">
+      <created>1536079006359</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1536079006359</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Create runnable jar">
+      <created>1536150970130</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1536150970130</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="156049000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="4547" y="468" width="1853" height="1080" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.21413976" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29449153" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.329718" />
+      <window_info anchor="bottom" id="CheckStyle" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3273305" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24958494" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.3296875" />
+      <window_info anchor="right" id="Maven" order="10" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Imported classes" />
+    <MESSAGE value="Create runnable jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create runnable jar" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/networking/MessageClient.kt" />
+    <entry file="file://$PROJECT_DIR$/src/nio/Manager.kt" />
+    <entry file="file://$PROJECT_DIR$/src/nio/NonBlockingServer.kt" />
+    <entry file="file://$PROJECT_DIR$/src/nio/NonBlockingClient.kt" />
+    <entry file="file://$PROJECT_DIR$/src/nio/Registerable.kt" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/security/KeyPairGenerator.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/security/SecureRandom.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/security/KeyPairGenerator.java" />
+    <entry file="file://$PROJECT_DIR$/src/devices/Room.kt" />
+    <entry file="file://$PROJECT_DIR$/src/devices/PC.kt" />
+    <entry file="file://$PROJECT_DIR$/src/devices/TV.kt" />
+    <entry file="file://$PROJECT_DIR$/src/devices/Constants.kt" />
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/nio/ByteBuffer.java" />
+    <entry file="file://$PROJECT_DIR$/src/devices/Lamp.kt" />
+    <entry file="file://$PROJECT_DIR$/src/devices/ArduinoModule.kt" />
+    <entry file="file://$PROJECT_DIR$/src/client/ArduinoClient.kt" />
+    <entry file="file://$PROJECT_DIR$/../NIOServer/src/nio/Main.kt" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/nio/channels/SocketChannel.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/Base64.java" />
+    <entry file="file://$USER_HOME$/Desktop/app_array.xml" />
+    <entry file="file://$PROJECT_DIR$/src/client/EncodedClient.kt" />
+    <entry file="file://$PROJECT_DIR$/src/client/SecureClient.kt" />
+    <entry file="file://$PROJECT_DIR$/src/client/Client.kt" />
+    <entry file="file://$PROJECT_DIR$/src/client/ClientException.kt" />
+    <entry file="file://$PROJECT_DIR$/src/networking/client/ClientException.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server.kt" />
+    <entry file="file://$PROJECT_DIR$/src/RoomModule.kt" />
+    <entry file="file://$PROJECT_DIR$/src/networking/nio/Registrable.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/client/SecureClient.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/client/RoomClient.kt" />
+    <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/client/Client.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/client/EncodedClient.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingClient.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/nio/Manager.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/nio/Server.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#24#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networking/client/ClientImpl.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>HomeControlServer:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>HomeControlServer</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>KotlinJavaRuntime</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
