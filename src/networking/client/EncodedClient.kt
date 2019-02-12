@@ -1,11 +1,12 @@
-package client
+package networking.client
 
+import networking.nio.NonBlockingClient
 import java.nio.ByteBuffer
 import java.nio.channels.SocketChannel
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-open class EncodedClient(private val channel: SocketChannel): Client {
+abstract class EncodedClient(channel: SocketChannel) : NonBlockingClient(channel) {
 
     private val writeSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
     private val readSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
@@ -20,7 +21,6 @@ open class EncodedClient(private val channel: SocketChannel): Client {
         // Prepare size buffer
         writeSizeBuffer.clear()
         writeSizeBuffer.put(size)
-
         writeSizeBuffer.rewind()
 
         // Write size
@@ -33,13 +33,7 @@ open class EncodedClient(private val channel: SocketChannel): Client {
     }
 
     @Throws (ClientException::class)
-    final override fun read(): ByteBuffer {
-
-        try {
-
-        } catch (e: Exception) {
-
-        }
+    final override fun read(): ByteArray {
 
         // Read size
         readSizeBuffer.clear()
@@ -55,6 +49,7 @@ open class EncodedClient(private val channel: SocketChannel): Client {
         val size = String(Base64.getDecoder().decode(readSizeBuffer).array(), StandardCharsets.UTF_8).toInt()
 
         if (size > 1000) {
+            println("ERROR: too large: $size")
             throw ClientException("Size was too large")
         }
 
@@ -63,11 +58,11 @@ open class EncodedClient(private val channel: SocketChannel): Client {
 
         if (bytesRead == -1) {
             close()
-            throw ClientException("client.Client was closed")
+            throw ClientException("Client was closed")
         }
 
         data.rewind()
-        return Base64.getDecoder().decode(data)
+        return Base64.getDecoder().decode(data).array()
     }
 
     override fun close() {
