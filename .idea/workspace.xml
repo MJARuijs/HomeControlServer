@@ -8,9 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="11fd2614-0fff-496b-a847-5c0b7c399467" name="Default" comment="Create runnable jar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/nio/Manager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/nio/Manager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/nio/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/nio/Server.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/networking/nio/Server.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="567">
+              <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
               <folding>
                 <element signature="e#24#98#0" expanded="true" />
               </folding>
@@ -59,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/src/networking/client/Client.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -176,6 +173,11 @@
             <path>
               <item name="HomeControlServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="HomeControlServer" type="462c0819:PsiDirectoryNode" />
+              <item name="runnable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HomeControlServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeControlServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -209,7 +211,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549708057870" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550044504323" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Room Module" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -220,6 +222,11 @@
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/runnable" />
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable\te" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="client" />
       <recent name="" />
@@ -230,11 +237,6 @@
       <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
       <recent name="C:\Users\Marc\Documents\Java Projects\HomeControlServer\runnable" />
       <recent name="C:\Users\Marc\Documents\Java Projects\HomeControlServer\runnable\HomeControlServer_jar" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/runnable" />
-      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
-      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable\te" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -368,21 +370,7 @@
       <workItem from="1549974543340" duration="745000" />
       <workItem from="1549986404592" duration="1282000" />
       <workItem from="1550002684197" duration="615000" />
-      <workItem from="1550042373024" duration="1625000" />
-    </task>
-    <task id="LOCAL-00024" summary="Create runnable jar">
-      <created>1525772139784</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1525772139784</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Create runnable jar">
-      <created>1525772445045</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1525772445045</updated>
+      <workItem from="1550042373024" duration="1964000" />
     </task>
     <task id="LOCAL-00026" summary="Create runnable jar">
       <created>1525772829368</created>
@@ -713,17 +701,31 @@
       <option name="project" value="LOCAL" />
       <updated>1549986419944</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Create runnable jar">
+      <created>1550044106991</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1550044106991</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Create runnable jar">
+      <created>1550044148055</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1550044148055</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159571000" />
+    <option name="totallyTimeSpent" value="159910000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1987" y="27" width="2493" height="1053" extended-state="6" />
+    <frame x="67" y="432" width="1853" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16101348" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21804096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -732,12 +734,12 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29449153" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28601694" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3293348" />
       <window_info anchor="bottom" id="CheckStyle" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3273305" />
@@ -866,7 +868,7 @@
     <entry file="file://$PROJECT_DIR$/src/networking/client/Client.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -879,8 +881,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/networking/nio/Server.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="567">
+          <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
           <folding>
             <element signature="e#24#98#0" expanded="true" />
           </folding>

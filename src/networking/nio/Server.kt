@@ -45,6 +45,7 @@ class Server(port: Int, private val manager: Manager) : NonBlockingServer(port) 
                     configuration += client.value.second.sendCommand("get_configuration")
                 }
 
+                println(configuration)
                 phoneClients[address]?.write(configuration)
                 return
             }
