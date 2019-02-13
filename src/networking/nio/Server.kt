@@ -38,7 +38,19 @@ class Server(port: Int, private val manager: Manager) : NonBlockingServer(port) 
                 clients.remove(address)
             }
         } else if (phoneClients.containsKey(address)) {
+
+            if (message == "get_configuration") {
+                var configuration = ""
+                roomClients.forEach { client ->
+                    configuration += client.value.second.sendCommand("get_configuration")
+                }
+
+                phoneClients[address]?.write(configuration)
+                return
+            }
+
             val messageInfo = message.split('|')
+
             if (messageInfo.size != 3) {
                 println(message)
                 return

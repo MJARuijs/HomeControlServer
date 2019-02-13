@@ -8,13 +8,16 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
 
     private val readSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
 
+    fun sendCommand(command: String): String {
+        write(command)
+        return readMessage()
+    }
+
     override fun write(bytes: ByteArray) {
         val buffer = ByteBuffer.allocate(bytes.size + 4)
         buffer.putInt(bytes.size)
         buffer.put(bytes)
         buffer.rewind()
-
-        println("Writing to: $address. ${String(bytes)}")
 
         channel.write(buffer)
     }
@@ -51,14 +54,10 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
     }
 
     override fun close() {
-        println("closing")
         channel.close()
     }
 
     override fun onRead() {
         callback(readMessage(), address)
-//        write("hello".toByteArray())
-
-//        println(String(read()))
     }
 }
