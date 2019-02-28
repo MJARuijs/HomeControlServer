@@ -18,7 +18,7 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
         buffer.putInt(bytes.size)
         buffer.put(bytes)
         buffer.rewind()
-
+        println("Writing ${String(bytes)}")
         channel.write(buffer)
     }
 

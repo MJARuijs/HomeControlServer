@@ -56,13 +56,12 @@ class Server(port: Int, private val manager: Manager) : NonBlockingServer(port) 
                 println(message)
                 return
             }
+
             val room = messageInfo[0].trim().toLowerCase()
             val mcuType = messageInfo[1].trim().toLowerCase()
             val data = messageInfo[2]
 
             roomClients.forEach { _, roomClient ->
-                println(room)
-                println(roomClient.first)
                 if (roomClient.first == room) {
                     roomClient.second.write("$mcuType|$data")
                 }
