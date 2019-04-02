@@ -10,7 +10,7 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
     private val clients = HashMap<String, ClientImpl>()
     private val roomClients = HashMap<String, Pair<String, ClientImpl>>()
     private val phoneClients = HashMap<String, ClientImpl>()
-    private var configs = ArrayList<String>()
+    private val configuration = ArrayList<String>()
 
     fun init() {
         knownRoomModules.forEach { client ->
@@ -38,7 +38,7 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
         val endIndex = channelString.lastIndexOf(':')
 
         val address = channelString.substring(startIndex, endIndex)
-        println(address)
+        println("Accepted Address: $address")
 
         val client = ClientImpl(channel, address, ::onReadCallback)
         manager.register(client)
@@ -47,30 +47,19 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
 
     private fun onReadCallback(message: String, address: String) {
         if (phoneClients.containsKey(address)) {
-
             if (message == "get_configuration") {
-                var configuration = ""
-                roomClients.forEach { client ->
-                    client.value.second.lastMessageReceived = ""
-                    client.value.second.write("get_configuration")
-                    Thread {
-                        while (!client.value.second.available()) {}
-                        configs.add(client.value.second.lastMessageReceived)
-                    }.start()
-
-//                    configuration += client.value.second.getAndResetLastMessage()
-                    println("Configuration: $configuration")
-                }
-                println("Config: ${configs.joinToString("|", "", "", -1, "", null)}")
-
-                phoneClients[address]?.write(configs.joinToString("|", "", "", -1, "", null))
+                processConfigurationRequest(address)
                 return
+            }
+
+            if (message == "PHONE") {
+                phoneClients[address]?.write("ACCESS_GRANTED")
             }
 
             val messageInfo = message.split('|')
 
             if (messageInfo.size != 3) {
-                println(message)
+                println("Invalid message! : $message")
                 return
             }
 
@@ -86,7 +75,6 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
 
             phoneClients[address]!!.write("SUCCESS")
         } else if (clients.containsKey(address)) {
-
             if (message.startsWith("PI")) {
                 val startIndex = message.indexOf(':') + 1
                 val room = message.substring(startIndex, message.length).trim().toLowerCase()
@@ -98,10 +86,33 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
                 phoneClients[address] = clients[address] ?: return
                 phoneClients[address]?.write("ACCESS_GRANTED")
                 clients.remove(address)
-                println("REGISTERED NEW PHONE")
+                println("REGISTERED NEW PHONE: $address")
             }
         }
         println("MESSAGE $message. FROM $address")
+    }
+
+    private fun processConfigurationRequest(address: String) {
+        var configuration = ""
+        roomClients.forEach { clientData ->
+            val client = clientData.value.second
+
+//            client.lastMessageReceived = ""
+            client.write("get_configuration")
+
+//            while (!client.available()) {
+//                println("Wa")
+//            }
+//            configuration += client.getAndResetLastMessage()
+
+            println("Configuration: $configuration")
+        }
+
+        phoneClients[address]?.write(configuration)
+    }
+
+    private fun onConfigurationsReceived() {
+
     }
 
 }

@@ -43,6 +43,7 @@ class Manager : Runnable {
                             try {
                                 client.onRead()
                             } catch (exception: ClientException) {
+                                println("CLIENT DISCONNECTED!")
                                 client.close()
                                 key.cancel()
                             }
@@ -51,6 +52,8 @@ class Manager : Runnable {
                 }
             } catch (e: Exception) {
                 println("STOPPED: ${e.message}")
+//                stop()
+//                break
             }
         }
     }

@@ -1,6 +1,8 @@
 package networking.client
 
+import jdk.jshell.spi.ExecutionControlProvider
 import networking.nio.NonBlockingClient
+import java.lang.Exception
 import java.nio.ByteBuffer
 import java.nio.channels.SocketChannel
 
@@ -40,43 +42,46 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
 
     @Throws (ClientException::class)
     override fun read(): ByteArray {
+        try {
+            readSizeBuffer.clear()
+            val sizeBytesRead = channel.read(readSizeBuffer)
 
-        readSizeBuffer.clear()
-        val sizeBytesRead = channel.read(readSizeBuffer)
+            if (sizeBytesRead == -1) {
+                throw ClientException("Size was too large")
+            }
 
-        if (sizeBytesRead == -1) {
-            throw ClientException("Size was too large")
+            readSizeBuffer.rewind()
+
+            // Read data
+            val size = readSizeBuffer.int
+
+            if (size > 1000) {
+                throw ClientException("Size was too large")
+            }
+
+            val data = ByteBuffer.allocate(size)
+            val bytesRead = channel.read(data)
+
+            if (bytesRead == -1) {
+                close()
+                throw ClientException("Client was closed")
+            }
+
+            data.rewind()
+
+            println("READ STRINGGG ${String(data.array())}")
+            return data.array()
+        } catch (e: Exception) {
+            throw ClientException(e.message!!)
         }
-
-        readSizeBuffer.rewind()
-
-        // Read data
-        val size = readSizeBuffer.int
-
-        if (size > 1000) {
-            throw ClientException("Size was too large")
-        }
-
-        val data = ByteBuffer.allocate(size)
-        val bytesRead = channel.read(data)
-
-        if (bytesRead == -1) {
-            close()
-            throw ClientException("Client was closed")
-        }
-
-        data.rewind()
-
-        println("READ STRINGGG ${String(data.array())}")
-        return data.array()
-    }
-
-    override fun close() {
-        channel.close()
     }
 
     override fun onRead() {
         lastMessageReceived = readMessage()
         callback(lastMessageReceived, address)
+    }
+
+    override fun close() {
+        channel.close()
     }
 }
