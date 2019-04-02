@@ -8,6 +8,22 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
 
     private val readSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
 
+    var lastMessageReceived = ""
+
+    fun resetLastMessage() {
+        lastMessageReceived = ""
+    }
+
+    fun getAndResetLastMessage(): String {
+        val temp = lastMessageReceived
+        lastMessageReceived = ""
+        return temp
+    }
+
+    fun available(): Boolean {
+        return lastMessageReceived != ""
+    }
+
     fun sendCommand(command: String): String {
         write(command)
         return readMessage()
@@ -50,6 +66,8 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
         }
 
         data.rewind()
+
+        println("READ STRINGGG ${String(data.array())}")
         return data.array()
     }
 
@@ -58,6 +76,7 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
     }
 
     override fun onRead() {
-        callback(readMessage(), address)
+        lastMessageReceived = readMessage()
+        callback(lastMessageReceived, address)
     }
 }

@@ -1,5 +1,8 @@
 import networking.nio.Manager
 import networking.nio.Server
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
 
 object Main {
 
@@ -11,9 +14,33 @@ object Main {
         thread.start()
         Thread.sleep(1000)
 
-        val server = Server(4443, manager)
+        if (!Files.exists(Path.of("connections.txt"))) {
+            Files.createFile(Path.of("connections.txt"))
+            println("File created!")
+        } else {
+            println("File already exists!")
+        }
+
+        val connections = readConnections()
+
+        val server = Server(4443, manager, connections)
         manager.register(server)
+        server.init()
         println("Server Started")
+    }
+
+    private fun readConnections(): ArrayList<String> {
+        val connections = ArrayList<String>()
+
+        try {
+            val stream = Files.lines(Paths.get("connections.txt"))
+            stream.forEach { line -> connections += line }
+        } catch (e: Exception) {
+            println("FILE COULD NOT BE READ")
+            return connections
+        }
+        println(connections)
+        return connections
     }
 
 }
