@@ -28,9 +28,11 @@ object Main {
         val address = try {
             val socket = DatagramSocket()
             socket.connect(InetAddress.getByName("8.8.8.8"), 10002)
+            val socketAddress = socket.localAddress.hostAddress
             socket.close()
-            socket.localAddress.hostAddress
+            socketAddress
         } catch (e: Exception) {
+            e.printStackTrace()
             ""
         }
 
