@@ -1,6 +1,5 @@
 package networking.client
 
-import jdk.jshell.spi.ExecutionControlProvider
 import networking.nio.NonBlockingClient
 import java.lang.Exception
 import java.nio.ByteBuffer
@@ -10,34 +9,18 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
 
     private val readSizeBuffer = ByteBuffer.allocateDirect(Integer.BYTES)
 
-    var lastMessageReceived = ""
-
-    fun resetLastMessage() {
-        lastMessageReceived = ""
-    }
-
-    fun getAndResetLastMessage(): String {
-        val temp = lastMessageReceived
-        lastMessageReceived = ""
-        return temp
-    }
-
-    fun available(): Boolean {
-        return lastMessageReceived != ""
-    }
-
-    fun sendCommand(command: String): String {
-        write(command)
-        return readMessage()
-    }
-
     override fun write(bytes: ByteArray) {
-        val buffer = ByteBuffer.allocate(bytes.size + 4)
-        buffer.putInt(bytes.size)
-        buffer.put(bytes)
-        buffer.rewind()
-        println("Writing ${String(bytes)}")
-        channel.write(buffer)
+        try {
+            val buffer = ByteBuffer.allocate(bytes.size + 4)
+            buffer.putInt(bytes.size)
+            buffer.put(bytes)
+            buffer.rewind()
+            println("Writing ${String(bytes)} to $address")
+            channel.write(buffer)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw ClientException("Invalid write")
+        }
     }
 
     @Throws (ClientException::class)
@@ -68,17 +51,18 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
             }
 
             data.rewind()
-
-            println("READ STRINGGG ${String(data.array())}")
             return data.array()
         } catch (e: Exception) {
-            throw ClientException(e.message!!)
+            throw ClientException("Invalid Read")
         }
     }
 
     override fun onRead() {
-        lastMessageReceived = readMessage()
-        callback(lastMessageReceived, address)
+        val message = readMessage()
+
+        Thread {
+            callback(message, address)
+        }.start()
     }
 
     override fun close() {

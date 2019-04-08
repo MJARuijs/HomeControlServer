@@ -23,7 +23,7 @@ object Main {
 
         val connections = readConnections()
 
-        val server = Server(4443, manager, connections)
+        val server = Server(4445, manager, connections)
         manager.register(server)
         server.init()
         println("Server Started")

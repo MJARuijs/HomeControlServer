@@ -51,6 +51,7 @@ class Manager : Runnable {
                     }
                 }
             } catch (e: Exception) {
+                e.printStackTrace()
                 println("STOPPED: ${e.message}")
 //                stop()
 //                break

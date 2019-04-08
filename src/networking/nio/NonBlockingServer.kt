@@ -11,7 +11,7 @@ abstract class NonBlockingServer(port: Int) : Registrable {
     private val channel = ServerSocketChannel.open()!!
 
     init {
-        val address = InetSocketAddress(port)
+        val address = InetSocketAddress("192.168.178.18", port)
         channel.bind(address)
         channel.configureBlocking(false)
     }
