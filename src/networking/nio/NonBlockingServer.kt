@@ -6,13 +6,12 @@ import java.nio.channels.Selector
 import java.nio.channels.ServerSocketChannel
 import java.nio.channels.SocketChannel
 
-abstract class NonBlockingServer(port: Int) : Registrable {
+abstract class NonBlockingServer(val address: String, port: Int) : Registrable {
 
     private val channel = ServerSocketChannel.open()!!
 
     init {
-        val address = InetSocketAddress("192.168.178.18", port)
-        channel.bind(address)
+        channel.bind(InetSocketAddress(address, port))
         channel.configureBlocking(false)
     }
 

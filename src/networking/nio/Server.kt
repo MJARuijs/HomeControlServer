@@ -3,10 +3,9 @@ package networking.nio
 import networking.client.ClientImpl
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
-import java.nio.channels.ServerSocketChannel
 import java.nio.channels.SocketChannel
 
-class Server(port: Int, private val manager: Manager, private val knownRoomModules: ArrayList<String>) : NonBlockingServer(port) {
+class Server(address: String, port: Int, private val manager: Manager, private val knownRoomModules: ArrayList<String>) : NonBlockingServer(address, port) {
 
     private val clients = HashMap<String, ClientImpl>()
     private val roomClients = HashMap<String, Pair<String, ClientImpl>>()
@@ -21,7 +20,7 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
             try {
                 val channel = SocketChannel.open()
                 channel.connect(InetSocketAddress(client, 4441))
-                val bytes = "SERVER_ADDRESS:192.168.178.48".toByteArray()
+                val bytes = "SERVER_ADDRESS:$address".toByteArray()
                 val buffer = ByteBuffer.allocate(bytes.size + 4)
                 buffer.putInt(bytes.size)
                 buffer.put(bytes)

@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11fd2614-0fff-496b-a847-5c0b7c399467" name="Default" comment="Create runnable jar">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeControlServer/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeControlServer/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeControlServer/networking/client/ClientImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeControlServer/networking/client/ClientImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/NonBlockingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/NonBlockingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/Server$onAccept$client$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/Server$onAccept$client$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeControlServer/networking/nio/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connections.txt" beforeDir="false" afterPath="$PROJECT_DIR$/connections.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/nio/Manager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/nio/Manager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networking/nio/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/nio/Server.kt" afterDir="false" />
     </list>
@@ -45,17 +37,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="25" column="32" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="522">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/connections.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/networking/nio/Server.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="72">
+              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -63,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+            <state relative-caret-position="72">
+              <caret line="8" column="48" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -111,21 +108,21 @@
         <option value="$PROJECT_DIR$/src/networking/client/RoomClient.kt" />
         <option value="$PROJECT_DIR$/src/networking/client/Client.kt" />
         <option value="$PROJECT_DIR$/src/networking/client/EncodedClient.kt" />
-        <option value="$PROJECT_DIR$/connections.txt" />
         <option value="$PROJECT_DIR$/src/networking/nio/Manager.kt" />
         <option value="$PROJECT_DIR$/src/networking/nio/PhoneServer.kt" />
         <option value="$PROJECT_DIR$/src/networking/client/ClientImpl.kt" />
-        <option value="$PROJECT_DIR$/src/networking/nio/Server.kt" />
         <option value="$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt" />
+        <option value="$PROJECT_DIR$/src/networking/nio/Server.kt" />
         <option value="$PROJECT_DIR$/src/Main.kt" />
+        <option value="$PROJECT_DIR$/connections.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="4547" />
-    <option name="y" value="468" />
-    <option name="width" value="1853" />
-    <option name="height" value="1080" />
+    <option name="x" value="1987" />
+    <option name="y" value="27" />
+    <option name="width" value="2493" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -134,7 +131,37 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="HomeControlServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeControlServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HomeControlServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeControlServer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HomeControlServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeControlServer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HomeControlServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeControlServer" type="462c0819:PsiDirectoryNode" />
+              <item name="runnable" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -150,6 +177,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/runnable" />
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
+      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable\te" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="client" />
       <recent name="" />
@@ -160,11 +192,6 @@
       <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
       <recent name="C:\Users\Marc\Documents\Java Projects\HomeControlServer\runnable" />
       <recent name="C:\Users\Marc\Documents\Java Projects\HomeControlServer\runnable\HomeControlServer_jar" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/runnable" />
-      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable" />
-      <recent name="C:\Users\Marc Ruijs\Documents\Java Projects\HomeControlServer\runnable\te" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -652,9 +679,10 @@
     <option name="totallyTimeSpent" value="161314000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4547" y="468" width="1853" height="1080" extended-state="6" />
+    <frame x="1987" y="27" width="2493" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.20309906" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14997956" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -692,6 +720,7 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Imported classes" />
     <MESSAGE value="Create runnable jar" />
     <option name="LAST_COMMIT_MESSAGE" value="Create runnable jar" />
@@ -770,13 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connections.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/networking/nio/PhoneServer.kt" />
     <entry file="file://$PROJECT_DIR$/src/networking/client/ClientImpl.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -809,26 +831,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.kt">
+    <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="72">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networking/nio/NonBlockingServer.kt">
+    <entry file="file://$PROJECT_DIR$/src/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        <state relative-caret-position="522">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/networking/nio/Server.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="72">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connections.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

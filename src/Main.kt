@@ -1,5 +1,7 @@
 import networking.nio.Manager
 import networking.nio.Server
+import java.net.DatagramSocket
+import java.net.InetAddress
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -23,7 +25,16 @@ object Main {
 
         val connections = readConnections()
 
-        val server = Server(4445, manager, connections)
+        val address = try {
+            val socket = DatagramSocket()
+            socket.connect(InetAddress.getByName("8.8.8.8"), 10002)
+            socket.close()
+            socket.localAddress.hostAddress
+        } catch (e: Exception) {
+            ""
+        }
+
+        val server = Server(address, 4445, manager, connections)
         manager.register(server)
         server.init()
         println("Server Started")
