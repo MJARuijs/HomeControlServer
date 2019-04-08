@@ -21,7 +21,7 @@ class Server(port: Int, private val manager: Manager, private val knownRoomModul
             try {
                 val channel = SocketChannel.open()
                 channel.connect(InetSocketAddress(client, 4441))
-                val bytes = "SERVER_ADDRESS:192.168.178.18".toByteArray()
+                val bytes = "SERVER_ADDRESS:192.168.178.48".toByteArray()
                 val buffer = ByteBuffer.allocate(bytes.size + 4)
                 buffer.putInt(bytes.size)
                 buffer.put(bytes)
