@@ -39,7 +39,7 @@ object Main {
         val server = Server(address, 4445, manager, connections)
         manager.register(server)
         server.init()
-        println("Server Started")
+        println("Server Started at $address")
     }
 
     private fun readConnections(): ArrayList<String> {
