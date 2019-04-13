@@ -48,8 +48,14 @@ class Server(address: String, port: Int, private val manager: Manager, private v
     }
 
     private fun onReadCallback(message: String, address: String) {
-
+        println("MESSAGE $message. FROM $address")
         if (phoneClients.containsKey(address)) {
+            if (message == "close_connection") {
+                phoneClients[address]?.close()
+                phoneClients.remove(address)
+                return
+            }
+
             val startIndex = message.indexOf("id=") + 3
             val endIndex = message.indexOf(';')
 
@@ -69,7 +75,9 @@ class Server(address: String, port: Int, private val manager: Manager, private v
             }
 
             if (message.contains("PHONE: ")) {
-                phoneClients[address] = clients[address] ?: return
+                if (!phoneClients.containsKey(address)) {
+                    phoneClients[address] = clients[address] ?: return
+                }
                 phoneClients[address]?.write("id=$id;ACCESS_GRANTED")
                 clients.remove(address)
                 return
@@ -101,7 +109,6 @@ class Server(address: String, port: Int, private val manager: Manager, private v
                 configuration.add(message)
             }
         }
-        println("MESSAGE $message. FROM $address")
     }
 
     private fun processCommand(messageInfo: List<String>, address: String, messageId: Int) {
@@ -113,7 +120,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
         val mcuType = messageInfo[1].trim().toLowerCase()
         val data = messageInfo[2]
 
-        roomClients.forEach { _, roomClient ->
+        roomClients.forEach { (_, roomClient) ->
             if (roomClient.first == room) {
                 roomClient.second.write("$mcuType|$data")
             } else {
