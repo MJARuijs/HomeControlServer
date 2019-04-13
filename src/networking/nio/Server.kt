@@ -59,7 +59,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
             val startIndex = message.indexOf("id=") + 3
             val endIndex = message.indexOf(';')
 
-            val id = message.substring(startIndex, endIndex).toInt()
+            val id = message.substring(startIndex, endIndex).toLong()
 
             if (message.contains("get_configuration")) {
                 processConfigurationRequest(address, id)
@@ -78,7 +78,12 @@ class Server(address: String, port: Int, private val manager: Manager, private v
                 if (!phoneClients.containsKey(address)) {
                     phoneClients[address] = clients[address] ?: return
                 }
-                phoneClients[address]?.write("id=$id;ACCESS_GRANTED")
+                try {
+                    phoneClients[address]?.write("id=$id;ACCESS_GRANTED")
+                } catch (e: Exception) {
+                    phoneClients[address] = clients[address] ?: return
+                    phoneClients[address]?.write("id=$id;ACCESS_GRANTED")
+                }
                 clients.remove(address)
                 return
             }
@@ -96,12 +101,27 @@ class Server(address: String, port: Int, private val manager: Manager, private v
                 val startIndex = message.indexOf("id=") + 3
                 val endIndex = message.indexOf(';')
 
-                val id = message.substring(startIndex, endIndex).toInt()
+                val id = message.substring(startIndex, endIndex).toLong()
 
                 phoneClients[address] = clients[address] ?: return
                 phoneClients[address]?.write("id=$id;ACCESS_GRANTED")
                 clients.remove(address)
                 println("REGISTERED NEW PHONE: $address")
+            } else if (message.contains("led_strip")) {
+                val startIndex = message.indexOf("id=") + 3
+                val endIndex = message.indexOf(';')
+
+                val id = message.substring(startIndex, endIndex).toLong()
+                val messageContent = message.substring(endIndex + 1)
+
+                val messageInfo = messageContent.split('|')
+
+                if (messageInfo.size != 3) {
+                    println("Invalid message! : $message")
+                    return
+                }
+
+                processCommand(messageInfo, address, id)
             }
         } else if (roomClients.containsKey(address)) {
             if (requiredModuleConfigs.contains(address)) {
@@ -111,7 +131,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
         }
     }
 
-    private fun processCommand(messageInfo: List<String>, address: String, messageId: Int) {
+    private fun processCommand(messageInfo: List<String>, address: String, messageId: Long) {
         configuration.clear()
         requiredModuleConfigs.clear()
         requiredModuleConfigs.addAll(roomClients.keys)
@@ -136,7 +156,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
         phoneClients[address]?.write("id=$messageId;$config")
     }
 
-    private fun processConfigurationRequest(address: String, messageId: Int) {
+    private fun processConfigurationRequest(address: String, messageId: Long) {
         configuration.clear()
         requiredModuleConfigs.clear()
         requiredModuleConfigs.addAll(roomClients.keys)
