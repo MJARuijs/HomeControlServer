@@ -59,7 +59,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
             val startIndex = message.indexOf("id=") + 3
             val endIndex = message.indexOf(';')
 
-            val id = message.substring(startIndex, endIndex).toLong()
+            val id = message.substring(startIndex, endIndex).toInt()
 
             if (message.contains("get_configuration")) {
                 processConfigurationRequest(address, id)
@@ -111,7 +111,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
                 val startIndex = message.indexOf("id=") + 3
                 val endIndex = message.indexOf(';')
 
-                val id = message.substring(startIndex, endIndex).toLong()
+                val id = message.substring(startIndex, endIndex).toInt()
                 val messageContent = message.substring(endIndex + 1)
 
                 val messageInfo = messageContent.split('|')
@@ -131,7 +131,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
         }
     }
 
-    private fun processCommand(messageInfo: List<String>, address: String, messageId: Long) {
+    private fun processCommand(messageInfo: List<String>, address: String, messageId: Int) {
         configuration.clear()
         requiredModuleConfigs.clear()
         requiredModuleConfigs.addAll(roomClients.keys)
@@ -156,7 +156,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
         phoneClients[address]?.write("id=$messageId;$config")
     }
 
-    private fun processConfigurationRequest(address: String, messageId: Long) {
+    private fun processConfigurationRequest(address: String, messageId: Int) {
         configuration.clear()
         requiredModuleConfigs.clear()
         requiredModuleConfigs.addAll(roomClients.keys)
