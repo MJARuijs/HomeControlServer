@@ -10,7 +10,7 @@ object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        println("Start of program")
+        println("Start of program!")
         val manager = Manager()
         val thread = Thread(manager, "Room Manager")
         thread.start()
