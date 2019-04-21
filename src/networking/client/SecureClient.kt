@@ -36,28 +36,17 @@ class SecureClient(channel: SocketChannel, address: String, callback: (String, S
         write(keyPair.public.encoded)
 
         val keyFactory = KeyFactory.getInstance("RSA")
-
-        var k = read()
-//        while (k.isEmpty()) {
-//            write("EMPTY KEY")
-//            k = read()
-//        }
-//        println("READ KEY:")
-//        println(String(k))
-        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(k))
+        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(read()))
 
         encryptor.init(Cipher.PUBLIC_KEY, serverKey)
         decryptor.init(Cipher.PRIVATE_KEY, clientKey)
-
-        println("DONE")
     }
 
     override fun onRead() {
-        println("ON READ!!!")
         val message = decodeMessage()
 
         Thread {
-            callback.invoke(message, address)
+            callback(message, address)
         }.start()
     }
 

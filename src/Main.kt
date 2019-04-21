@@ -1,5 +1,6 @@
+import networking.PhoneServer
+import networking.RoomServer
 import networking.nio.Manager
-import networking.nio.Server
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.nio.file.Files
@@ -11,10 +12,13 @@ object Main {
     @JvmStatic
     fun main(args: Array<String>) {
         println("Start of program!")
-        val manager = Manager()
-        val thread = Thread(manager, "Room Manager")
-        thread.start()
-        Thread.sleep(1000)
+
+        val phoneManager = Manager()
+        val roomManager = Manager()
+
+        Thread(phoneManager).start()
+        Thread(roomManager).start()
+        Thread.sleep(100)
 
         if (!Files.exists(Path.of("connections.txt"))) {
             Files.createFile(Path.of("connections.txt"))
@@ -36,10 +40,14 @@ object Main {
             ""
         }
 
-        val server = Server(address, 4447, manager, connections)
-        manager.register(server)
-        server.init()
-        println("Server Started at $address")
+
+
+        val roomServer = RoomServer(address, 4440, roomManager, connections)
+        roomManager.register(roomServer)
+        roomServer.init()
+
+        val phoneServer = PhoneServer(address, 4441, phoneManager)
+        phoneManager.register(phoneServer)
     }
 
     private fun readConnections(): ArrayList<String> {

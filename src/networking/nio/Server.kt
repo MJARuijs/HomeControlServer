@@ -1,7 +1,6 @@
 package networking.nio
 
 import networking.client.ClientImpl
-import networking.client.EncodedClient
 import networking.client.SecureClient
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
