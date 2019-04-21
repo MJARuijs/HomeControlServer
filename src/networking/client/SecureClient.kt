@@ -11,7 +11,7 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
 
-abstract class SecureClient(channel: SocketChannel) : EncodedClient(channel) {
+class SecureClient(channel: SocketChannel, address: String, callback: (String, String) -> Unit) : EncodedClient(channel, address, callback) {
 
     private companion object {
         val asymmetricGenerator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
@@ -36,10 +36,29 @@ abstract class SecureClient(channel: SocketChannel) : EncodedClient(channel) {
         write(keyPair.public.encoded)
 
         val keyFactory = KeyFactory.getInstance("RSA")
-        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(read()))
+
+        var k = read()
+//        while (k.isEmpty()) {
+//            write("EMPTY KEY")
+//            k = read()
+//        }
+//        println("READ KEY:")
+//        println(String(k))
+        val serverKey = keyFactory.generatePublic(X509EncodedKeySpec(k))
 
         encryptor.init(Cipher.PUBLIC_KEY, serverKey)
         decryptor.init(Cipher.PRIVATE_KEY, clientKey)
+
+        println("DONE")
+    }
+
+    override fun onRead() {
+        println("ON READ!!!")
+        val message = decodeMessage()
+
+        Thread {
+            callback.invoke(message, address)
+        }.start()
     }
 
     fun decodeMessage(): String {
@@ -58,12 +77,12 @@ abstract class SecureClient(channel: SocketChannel) : EncodedClient(channel) {
             String(decryptedMessage, UTF_8)
         } catch (e: Exception) {
             println(e.message)
-            throw RuntimeException()
+            throw ClientException("")
         }
 
     }
 
-    fun writeMessage(message: String) {
+    override fun write(message: String) {
         val cipher = Cipher.getInstance("AES")
         cipher.init(Cipher.ENCRYPT_MODE, symmetricKey)
         val messageBytes = cipher.doFinal(message.toByteArray(UTF_8))
@@ -73,6 +92,4 @@ abstract class SecureClient(channel: SocketChannel) : EncodedClient(channel) {
         write(messageBytes)
         write(keyBytes)
     }
-
-
 }

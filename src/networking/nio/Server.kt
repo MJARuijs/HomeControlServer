@@ -1,15 +1,17 @@
 package networking.nio
 
 import networking.client.ClientImpl
+import networking.client.EncodedClient
+import networking.client.SecureClient
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.SocketChannel
 
 class Server(address: String, port: Int, private val manager: Manager, private val knownRoomModules: ArrayList<String>) : NonBlockingServer(address, port) {
 
-    private val clients = HashMap<String, ClientImpl>()
+    private val clients = HashMap<String, SecureClient>()
     private val roomClients = HashMap<String, Pair<String, ClientImpl>>()
-    private val phoneClients = HashMap<String, ClientImpl>()
+    private val phoneClients = HashMap<String, SecureClient>()
     private val configuration = ArrayList<String>()
 
     private var requiredModuleConfigs = HashSet<String>()
@@ -42,7 +44,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
         val address = channelString.substring(startIndex, endIndex)
         println("Accepted Address: $address")
 
-        val client = ClientImpl(channel, address, ::onReadCallback)
+        val client = SecureClient(channel, address, ::onReadCallback)
         manager.register(client)
         clients[address] = client
     }
@@ -93,7 +95,7 @@ class Server(address: String, port: Int, private val manager: Manager, private v
             if (message.startsWith("PI")) {
                 val startIndex = message.indexOf(':') + 1
                 val room = message.substring(startIndex, message.length).trim().toLowerCase()
-                roomClients[address] = Pair(room, clients[address] ?: return)
+//                roomClients[address] = Pair(room, clients[address] ?: return)
                 clients.remove(address)
             }
 

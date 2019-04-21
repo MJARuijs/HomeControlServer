@@ -36,7 +36,7 @@ object Main {
             ""
         }
 
-        val server = Server(address, 4445, manager, connections)
+        val server = Server(address, 4447, manager, connections)
         manager.register(server)
         server.init()
         println("Server Started at $address")

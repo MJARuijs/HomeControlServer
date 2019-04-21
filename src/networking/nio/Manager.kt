@@ -1,6 +1,7 @@
 package networking.nio
 
 import networking.client.ClientException
+import networking.client.SecureClient
 import java.nio.channels.Selector
 import java.util.concurrent.atomic.AtomicBoolean
 
