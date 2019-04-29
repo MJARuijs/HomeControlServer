@@ -40,8 +40,6 @@ object Main {
             ""
         }
 
-
-
         val roomServer = RoomServer(address, 4440, roomManager, connections)
         roomManager.register(roomServer)
         roomServer.init()

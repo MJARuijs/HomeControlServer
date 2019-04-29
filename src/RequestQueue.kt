@@ -1,5 +1,7 @@
+import java.lang.Exception
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.ConcurrentModificationException
 
 object RequestQueue {
 
@@ -34,8 +36,6 @@ object RequestQueue {
         requests.removeIf { request -> request.first == id }
         responses += Pair(id, response)
 
-//        Thread.sleep(50)
-
         requestLocked.set(false)
         responseLocked.set(false)
     }
@@ -47,10 +47,15 @@ object RequestQueue {
         responseLocked.set(true)
         var containsResponse = false
 
-        responses.forEach { response ->
-            if (response.first == id) {
-                containsResponse = true
+        try {
+            for (response in responses.iterator()) {
+                if (response.first == id) {
+                    containsResponse = true
+                    break
+                }
             }
+        } catch (e: Exception) {
+
         }
 
         requestLocked.set(false)
@@ -64,17 +69,17 @@ object RequestQueue {
         requestLocked.set(true)
         responseLocked.set(true)
 
-        if (requests.size != 0){
-            println(requests.size)
-        }
-
         var request: Pair<String, String>? = null
 
-        for (item in requests) {
-            if (item.first.contains(id)) {
-                request = item
-                break
+        try {
+            for (item in requests.iterator()) {
+                if (item.first.contains(id)) {
+                    request = item
+                    break
+                }
             }
+        } catch (e: Exception) {
+
         }
 
 //        val request = requests.find { request -> request.first.contains(id) }

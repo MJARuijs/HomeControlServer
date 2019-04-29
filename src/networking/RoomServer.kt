@@ -3,6 +3,8 @@ package networking
 import networking.client.ClientImpl
 import networking.nio.Manager
 import networking.nio.NonBlockingServer
+import java.io.FileWriter
+import java.io.PrintWriter
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.SocketChannel
@@ -20,7 +22,7 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
                     val request = RequestQueue.takeRequestIfAvailable("ROOM")
 
                     if (request != null) {
-
+                        println("${request.first}   ${request.second}")
                         if (request.second == "get_configuration") {
                             val config = getConfiguration()
                             RequestQueue.finishRequest(request.first, config)
@@ -30,9 +32,8 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
                         }
                     }
                 } catch (e: Exception) {
-
+                    e.printStackTrace()
                 }
-
             }
         }.start()
     }
@@ -42,16 +43,15 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
             println("Client: $client")
             try {
                 val channel = SocketChannel.open()
-                channel.connect(InetSocketAddress(client, 4442))
+                channel.connect(InetSocketAddress(client, 4443))
                 val bytes = "SERVER_ADDRESS:$address".toByteArray()
                 val buffer = ByteBuffer.allocate(bytes.size + 4)
                 buffer.putInt(bytes.size)
                 buffer.put(bytes)
                 buffer.rewind()
                 channel.write(buffer)
-                channel.close()
+//                channel.close()
             } catch (e: Exception) {
-                e.printStackTrace()
                 println("FAILED CONNECTION WITH $client")
             }
         }
@@ -70,6 +70,12 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         val message = client.readMessage()
         val roomStartIndex = message.indexOf(':') + 1
         val room = message.substring(roomStartIndex, message.length).trim().toLowerCase()
+        println(message)
+        println(room)
+
+        if (!knownModules.contains(address) && !clients.containsKey(address)) {
+            addToFile(address)
+        }
 
         manager.register(client)
         clients[address] = Pair(room, client)
@@ -93,7 +99,10 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         val mcuType = messageInfo[1].trim().toLowerCase()
         val data = messageInfo[2]
 
+        println(command)
+
         clients.forEach { (_, roomClient) ->
+            println(roomClient.first)
             if (roomClient.first == room) {
                 roomClient.second.write("$mcuType|$data")
             } else {
@@ -122,5 +131,11 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         }
 
         return configuration.joinToString("|", "", "", -1, "", null)
+    }
+
+    private fun addToFile(connection: String) {
+        val printWriter = PrintWriter(FileWriter("connections.txt", true))
+        printWriter.println(connection)
+        printWriter.close()
     }
 }

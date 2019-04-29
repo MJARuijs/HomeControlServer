@@ -6,6 +6,7 @@ import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.SocketChannel
 
+@Deprecated("")
 class Server(address: String, port: Int, private val manager: Manager, private val knownRoomModules: ArrayList<String>) : NonBlockingServer(address, port) {
 
     private val clients = HashMap<String, SecureClient>()

@@ -35,7 +35,7 @@ class PhoneServer(address: String, port: Int, private val manager: Manager) : No
     }
 
     private fun onReadCallback(message: String, address: String) {
-        if (message == "close_connection") {
+        if (message.contains("close_connection")) {
             clients[address]?.close()
             clients.remove(address)
             return
