@@ -46,6 +46,7 @@ class SecureClient(channel: SocketChannel, address: String, callback: (String, S
         val message = decodeMessage()
 
         Thread {
+            println("CALLING CALLBACK")
             callback(message, address)
         }.start()
     }
@@ -72,6 +73,7 @@ class SecureClient(channel: SocketChannel, address: String, callback: (String, S
     }
 
     override fun write(message: String) {
+        println("WRITING $message TO PHONE $address")
         val cipher = Cipher.getInstance("AES")
         cipher.init(Cipher.ENCRYPT_MODE, symmetricKey)
         val messageBytes = cipher.doFinal(message.toByteArray(UTF_8))

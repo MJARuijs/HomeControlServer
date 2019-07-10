@@ -67,21 +67,22 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
 
         val client = ClientImpl(channel, address, ::onReadCallback)
 
-        val message = client.readMessage()
-        val roomStartIndex = message.indexOf(':') + 1
-        val room = message.substring(roomStartIndex, message.length).trim().toLowerCase()
-        println(message)
-        println(room)
-
         if (!knownModules.contains(address) && !clients.containsKey(address)) {
             addToFile(address)
         }
 
         manager.register(client)
-        clients[address] = Pair(room, client)
+        clients[address] = Pair("", client)
     }
 
     private fun onReadCallback(message: String, address: String) {
+        if (message.startsWith("PI")) {
+            val roomStartIndex = message.indexOf(':') + 1
+            val room = message.substring(roomStartIndex, message.length).trim().toLowerCase()
+            println(message)
+            println(room)
+            clients[address] = Pair(room, clients[address]?.second ?: return)
+        }
         if (requiredModuleConfigs.contains(address)) {
             requiredModuleConfigs.remove(address)
             configuration += message

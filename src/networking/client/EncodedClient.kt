@@ -37,7 +37,7 @@ open class EncodedClient(channel: SocketChannel, val address: String, val callba
         }
 
         if (sizeBytesRead == -1) {
-            throw ClientException("Size was too large")
+            throw ClientException("Size was invalid")
         }
 
         readSizeBuffer.rewind()
@@ -55,7 +55,7 @@ open class EncodedClient(channel: SocketChannel, val address: String, val callba
         val size = String(Base64.getDecoder().decode(sizeArray)).toInt()
 
         if (size > 1000) {
-            throw ClientException("Size was too large")
+            throw ClientException("Size was too large $size")
         }
 
         val data = ByteBuffer.allocate(size)
@@ -79,6 +79,7 @@ open class EncodedClient(channel: SocketChannel, val address: String, val callba
     }
 
     override fun close() {
+        super.close()
         channel.close()
     }
 }

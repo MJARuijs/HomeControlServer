@@ -66,6 +66,7 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
     }
 
     override fun close() {
+        super.close()
         channel.close()
     }
 }

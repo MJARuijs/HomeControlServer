@@ -98,6 +98,8 @@ object RequestQueue {
         val response = responses.find { r -> r.first == id } ?: return ""
         responses.removeIf { r -> r.first == id }
 
+        println("TAKING $id --> $response")
+
         requestLocked.set(false)
         responseLocked.set(false)
         return response.second
