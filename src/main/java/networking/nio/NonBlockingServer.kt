@@ -12,6 +12,7 @@ abstract class NonBlockingServer(val address: String, port: Int) : Registrable {
 
     init {
         channel.bind(InetSocketAddress(address, port))
+        println((channel.socket().inetAddress.hostName))
         channel.configureBlocking(false)
     }
 

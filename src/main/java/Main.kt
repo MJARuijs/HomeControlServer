@@ -38,11 +38,11 @@ object Main {
             ""
         }
 
-        val roomServer = RoomServer("217.63.194.225", 4440, roomManager, connections)
+        val roomServer = RoomServer(address, 4440, roomManager, connections)
         roomManager.register(roomServer)
         roomServer.init()
 
-        val phoneServer = PhoneServer("217.63.194.225", 4441, phoneManager)
+        val phoneServer = PhoneServer(address, 4441, phoneManager)
         phoneManager.register(phoneServer)
     }
 
