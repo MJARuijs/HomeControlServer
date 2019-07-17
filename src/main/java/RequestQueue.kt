@@ -19,7 +19,7 @@ object RequestQueue {
 
         val id = System.nanoTime().toString() + "_$requester"
         requests += Pair(id, request)
-        println("ADDING REQUEST: $id $request")
+//        println("ADDING REQUEST: $id $request")
 
         requestLocked.set(false)
         responseLocked.set(false)
@@ -27,9 +27,9 @@ object RequestQueue {
     }
 
     fun finishRequest(id: String, response: String) {
-        println("WAITING FOR UNLOCKS ${requestLocked.get()}  ${responseLocked.get()}")
+//        println("WAITING FOR UNLOCKS ${requestLocked.get()}  ${responseLocked.get()}")
         while (requestLocked.get() || responseLocked.get()) {}
-        println("UNLOCKED: ADDED $response FOR $id")
+//        println("UNLOCKED: ADDED $response FOR $id")
         requestLocked.set(true)
         responseLocked.set(true)
 
@@ -98,7 +98,7 @@ object RequestQueue {
         val response = responses.find { r -> r.first == id } ?: return ""
         responses.removeIf { r -> r.first == id }
 
-        println("TAKING $id --> $response")
+//        println("TAKING $id --> $response")
 
         requestLocked.set(false)
         responseLocked.set(false)

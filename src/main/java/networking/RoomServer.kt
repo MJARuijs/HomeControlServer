@@ -3,6 +3,7 @@ package networking
 import networking.client.ClientImpl
 import networking.nio.Manager
 import networking.nio.NonBlockingServer
+import util.Logger
 import java.io.FileWriter
 import java.io.PrintWriter
 import java.net.InetSocketAddress
@@ -22,9 +23,8 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
                     val request = RequestQueue.takeRequestIfAvailable("ROOM")
 
                     if (request != null) {
-                        println("${request.first}   ${request.second}")
-                        if (request.second == "get_configuration") {
-                            val config = getConfiguration()
+                        if (request.second.contains("configuration")) {
+                            val config = getConfiguration(request.second)
                             RequestQueue.finishRequest(request.first, config)
                         } else {
                             val result = processCommand(request.second)
@@ -40,7 +40,6 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
 
     fun init() {
         knownModules.forEach { client ->
-            println("Client: $client")
             try {
                 val channel = SocketChannel.open()
                 channel.connect(InetSocketAddress(client, 4443))
@@ -50,9 +49,8 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
                 buffer.put(bytes)
                 buffer.rewind()
                 channel.write(buffer)
-//                channel.close()
             } catch (e: Exception) {
-                println("FAILED CONNECTION WITH $client")
+                Logger.warn("FAILED CONNECTION WITH $client")
             }
         }
     }
@@ -63,7 +61,7 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         val endIndex = channelString.lastIndexOf(':')
 
         val address = channelString.substring(addressStartIndex, endIndex)
-        println("Accepted Address: $address")
+        Logger.debug("Accepted Address: $address")
 
         val client = ClientImpl(channel, address, ::onReadCallback)
 
@@ -79,8 +77,6 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         if (message.startsWith("PI")) {
             val roomStartIndex = message.indexOf(':') + 1
             val room = message.substring(roomStartIndex, message.length).trim().toLowerCase()
-            println(message)
-            println(room)
             clients[address] = Pair(room, clients[address]?.second ?: return)
         }
         if (requiredModuleConfigs.contains(address)) {
@@ -100,10 +96,7 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         val mcuType = messageInfo[1].trim().toLowerCase()
         val data = messageInfo[2]
 
-        println(command)
-
         clients.forEach { (_, roomClient) ->
-            println(roomClient.first)
             if (roomClient.first == room) {
                 roomClient.second.write("$mcuType|$data")
             } else {
@@ -118,13 +111,13 @@ class RoomServer(address: String, port: Int, private val manager: Manager, priva
         return configuration.joinToString("|", "", "", -1, "", null)
     }
 
-    private fun getConfiguration(): String {
+    private fun getConfiguration(command: String): String {
         configuration.clear()
         requiredModuleConfigs.clear()
         requiredModuleConfigs.addAll(clients.keys)
 
         clients.forEach { client ->
-            client.value.second.write("get_configuration")
+            client.value.second.write(command)
         }
 
         while (requiredModuleConfigs.isNotEmpty()) {

@@ -3,27 +3,12 @@ package networking
 import networking.client.SecureClient
 import networking.nio.Manager
 import networking.nio.NonBlockingServer
+import util.Logger
 import java.nio.channels.SocketChannel
 
 class PhoneServer(address: String, port: Int, private val manager: Manager) : NonBlockingServer(address, port) {
 
     private val clients = HashMap<String, SecureClient>()
-
-    init {
-        Thread {
-            while (true) {
-                var available = System.`in`.available()
-                if (available > 0) {
-                    println("SUP")
-
-                    val message = String(System.`in`.readNBytes(available))
-                    println("SUPww $message ${clients.size}")
-
-                    clients.forEach { client -> client.value.write(message) }
-                }
-            }
-        }.start()
-    }
 
     override fun onAccept(channel: SocketChannel) {
         val channelString = channel.toString()
@@ -31,7 +16,7 @@ class PhoneServer(address: String, port: Int, private val manager: Manager) : No
         val addressEndIndex = channelString.lastIndexOf(':')
 
         val address = channelString.substring(addressStartIndex, addressEndIndex)
-        println("Accepted Address: $address")
+        Logger.debug("Accepted Address: $address")
 
         val client = SecureClient(channel, address, ::onReadCallback)
 
@@ -63,13 +48,7 @@ class PhoneServer(address: String, port: Int, private val manager: Manager) : No
         val id = message.substring(startIndex, endIndex).toInt()
 
         if (message.contains("get_configuration")) {
-            println("PROCESSING MESSAGE!!!!!!!!!!!!!")
             val config = processCommand()
-            if (clients[address] == null) {
-                println("NULL CLIENT")
-            } else {
-                println("NON NULL CLIENT")
-            }
             clients[address]?.write("id=$id;$config")
             return
         }
@@ -77,14 +56,12 @@ class PhoneServer(address: String, port: Int, private val manager: Manager) : No
         val messageContent = message.substring(endIndex + 1)
 
         if (message.contains("PHONE: ")) {
-
             try {
                 clients[address]?.write("id=$id;ACCESS_GRANTED")
             } catch (e: Exception) {
                 clients[address] = clients[address] ?: return
                 clients[address]?.write("id=$id;ACCESS_GRANTED")
             }
-//            clients.remove(address)
             return
         }
 

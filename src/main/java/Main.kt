@@ -1,6 +1,7 @@
 import networking.PhoneServer
 import networking.RoomServer
 import networking.nio.Manager
+import util.Logger
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.nio.file.Files
@@ -11,7 +12,7 @@ object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        println("Start of program!")
+        Logger.debug("Start of program!")
 
         val phoneManager = Manager()
         val roomManager = Manager()
@@ -22,9 +23,6 @@ object Main {
 
         if (!Files.exists(Path.of("connections.txt"))) {
             Files.createFile(Path.of("connections.txt"))
-            println("File created!")
-        } else {
-            println("File already exists!")
         }
 
         val connections = readConnections()
@@ -55,10 +53,9 @@ object Main {
             val stream = Files.lines(Paths.get("connections.txt"))
             stream.forEach { line -> connections += line }
         } catch (e: Exception) {
-            println("FILE COULD NOT BE READ")
+            Logger.warn("FILE COULD NOT BE READ")
             return connections
         }
-        println(connections)
         return connections
     }
 

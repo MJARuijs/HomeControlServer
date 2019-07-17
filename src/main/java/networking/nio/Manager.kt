@@ -2,6 +2,7 @@ package networking.nio
 
 import networking.client.ClientException
 import networking.client.SecureClient
+import util.Logger
 import java.nio.channels.Selector
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -44,7 +45,7 @@ class Manager : Runnable {
                             try {
                                 client.onRead()
                             } catch (exception: ClientException) {
-                                println("CLIENT DISCONNECTED!")
+                                Logger.warn("CLIENT DISCONNECTED!")
                                 client.close()
                                 key.cancel()
                             }
@@ -53,7 +54,7 @@ class Manager : Runnable {
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
-                println("STOPPED: ${e.message}")
+                Logger.warn("STOPPED: ${e.message}")
 //                stop()
 //                break
             }

@@ -1,5 +1,6 @@
 package networking.client
 
+import util.Logger
 import java.nio.channels.SocketChannel
 import java.nio.charset.StandardCharsets.UTF_8
 import java.security.KeyFactory
@@ -46,7 +47,6 @@ class SecureClient(channel: SocketChannel, address: String, callback: (String, S
         val message = decodeMessage()
 
         Thread {
-            println("CALLING CALLBACK")
             callback(message, address)
         }.start()
     }
@@ -66,14 +66,14 @@ class SecureClient(channel: SocketChannel, address: String, callback: (String, S
 
             String(decryptedMessage, UTF_8)
         } catch (e: Exception) {
-            println(e.message)
+            Logger.err(e.message)
             throw ClientException("")
         }
 
     }
 
     override fun write(message: String) {
-        println("WRITING $message TO PHONE $address")
+        Logger.info("WRITING $message TO PHONE $address")
         val cipher = Cipher.getInstance("AES")
         cipher.init(Cipher.ENCRYPT_MODE, symmetricKey)
         val messageBytes = cipher.doFinal(message.toByteArray(UTF_8))

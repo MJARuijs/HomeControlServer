@@ -1,6 +1,7 @@
 package networking.client
 
 import networking.nio.NonBlockingClient
+import util.Logger
 import java.lang.Exception
 import java.nio.ByteBuffer
 import java.nio.channels.SocketChannel
@@ -15,7 +16,7 @@ class ClientImpl(channel: SocketChannel, private val address: String, private va
             buffer.putInt(bytes.size)
             buffer.put(bytes)
             buffer.rewind()
-            println("Writing ${String(bytes)} to $address")
+            Logger.info("Writing ${String(bytes)} to $address")
             channel.write(buffer)
         } catch (e: Exception) {
             e.printStackTrace()
